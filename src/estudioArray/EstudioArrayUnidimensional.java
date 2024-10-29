@@ -1,5 +1,7 @@
 package estudioArray;
 
+import java.util.Scanner;
+
 public class EstudioArrayUnidimensional {
 
     public EstudioArrayUnidimensional(){
@@ -73,11 +75,60 @@ public class EstudioArrayUnidimensional {
         */
         
         
+    
+        // GENERAR NUMEROS ALEATORIOS Y QUE NO SE REPITAN
+        int[] numerosAleatorios = generaAleatorios();
+
+        for (int i : numerosAleatorios) {
+            System.out.print("- " + i);
+        }
+
     }
 
 
 
     // ----------------------------------------------------------------------------------------------
+
+    private int[] generaAleatorios(){
+        Scanner sc = new Scanner(System.in);
+        int cantidad, numeroMin, numeroMax, numRandom;
+        boolean numEncotrado = false;
+        
+        System.out.println("¿Cuántos números aleatorios quieres generar?");
+        cantidad = sc.nextInt();
+        int[] arrRandoms = new int[cantidad];
+
+        System.out.println("¿Cuál es el valor mínimo?");
+        numeroMin = sc.nextInt();
+
+        System.out.println("¿Cuál es el valor máximo?");
+        numeroMax = sc.nextInt();
+
+        if (numeroMin > numeroMax) {
+            int c = numeroMax;
+            numeroMax = numeroMin;
+            numeroMin = c;
+        }
+
+        for(int i = 0; i < arrRandoms.length; i++){
+            numRandom = (int)(Math.floor(Math.random() * (numeroMax - numeroMin + 1)) + numeroMin);
+
+            for (int j = 0; j < arrRandoms.length; j++) {
+                if (numRandom == arrRandoms[j]) {
+                    numEncotrado = true;
+                    break;
+                }
+            }
+            if (numEncotrado) i--;
+            else arrRandoms[i] = numRandom;
+
+            numEncotrado = false;
+            
+        }
+
+
+        return arrRandoms;
+    }
 
     private int[] generaPrimitiva() {
             int[] primitiva = new int[10];
@@ -97,6 +148,7 @@ public class EstudioArrayUnidimensional {
         media = suma/notas.length;
         return media;
     }
+
 
     
 }
