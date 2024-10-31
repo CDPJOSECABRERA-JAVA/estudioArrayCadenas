@@ -116,14 +116,39 @@ public class EjerciciosArraysUnidimensionales {
 
     private void ejercicio4(){
         Scanner sc = new Scanner(System.in);
-        int numUsuario;
+        int numUsuario,contador=0;
         int[] arr1 = new int[5];
         int[] arr2 = new int[5];
-
         int[] arr3 = new int[arr1.length * 2];
 
         System.out.println("Rellena el array 1 con números:");
-        
+        for (int i = 0; i < arr1.length; i++) {
+            System.out.println("Posición " + i + ":");
+            numUsuario = sc.nextInt();
+            arr1[i] = numUsuario;
+
+        }
+
+        System.out.println("Rellena el array 2 con números:");
+        for (int i = 0; i < arr2.length; i++) {
+            System.out.println("Posición " + i + ":");
+            numUsuario = sc.nextInt();
+            arr2[i] = numUsuario;
+
+        }
+
+        for (int i = 0; i < arr3.length; i++) {
+            if(i%2 == 0){
+                arr3[i] = arr1[contador];              
+            }else{
+                arr3[i] = arr2[contador];
+                contador++;
+            }
+            
+        }
+        for (int i = 0; i < arr3.length; i++) {
+            System.out.print(" - " + arr3[i]);
+        }
         
         
     }
