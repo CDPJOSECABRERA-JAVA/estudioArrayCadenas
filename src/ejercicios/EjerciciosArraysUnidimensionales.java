@@ -32,15 +32,18 @@ public class EjerciciosArraysUnidimensionales {
         int numRandom, numMenor, numMayor;
         numMayor = Integer.MIN_VALUE;
         numMenor = Integer.MAX_VALUE;
-        
+        String arrString = "";
+
         int[] arr = new int[10];
 
         for(int i = 0; i < arr.length; i++){
             numRandom = (int)(Math.floor(Math.random()*100+1));
             arr[i] = numRandom;
+            arrString += arr[i] + " ";
             if (numMenor > numRandom) numMenor = numRandom;
             if(numMayor < numRandom) numMayor = numRandom;
         }
+        System.out.println(arrString);
 
         System.out.printf("Número mayor: %3d%nNúmero menor: %3d%n", numMayor, numMenor);
 
@@ -49,14 +52,14 @@ public class EjerciciosArraysUnidimensionales {
     private void ejercicio2(){
         int uno=0,dos=0,tres=0,cuatro=0,cinco=0,seis=0,siete=0,ocho=0,nueve=0,diez=0;
         int numRandom;
+        String arrString = "";
 
         int[] numeros = new int[20];
 
         for(int i = 0; i < numeros.length; i++){
             numRandom = (int)(Math.floor(Math.random()*10 +1));
-
             numeros[i] = numRandom;
-
+            arrString += numeros[i] + " ";
             switch (numeros[i]) {
                 case 1:
                     uno++;
@@ -90,9 +93,9 @@ public class EjerciciosArraysUnidimensionales {
                     break;
             }
         }
+        System.out.println(arrString);
         System.out.printf("Uno: %2d%nDos: %2d%nTres: %2d%nCuatro: %2d%nCinco: %2d%nSeis: %2d%nSiete: %2s%nOcho: %2d%nNueve: %2d%nDiez: %2d%n",
         uno,dos,tres,cuatro,cinco,seis,siete,ocho,nueve,diez);
-        
     }
 
     private void ejercicio3(){
@@ -143,9 +146,9 @@ public class EjerciciosArraysUnidimensionales {
             }else{
                 arr3[i] = arr2[contador];
                 contador++;
-            }
-            
+            }            
         }
+        
         for (int i = 0; i < arr3.length; i++) {
             System.out.print(" - " + arr3[i]);
         }
