@@ -24,7 +24,7 @@ public class EjerciciosArraysUnidimensionales {
         //(es decir, el primer elemento del primer array, seguido del primer elemento del segundo array, y así sucesivamente).
         //Muestra el array resultante
         
-        ejercicio4();
+        //ejercicio4();
     }
 
     private void ejercicio1(){
