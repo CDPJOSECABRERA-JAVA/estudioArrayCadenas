@@ -5,10 +5,10 @@ import java.util.Scanner;
 public class Notas {
 
     int[][] notas={
-        {1,6,7,5,7,3,4,6,8,1,8,10},
-        {2,4,5,3,7,6,8,4,9,10,7,10},
+        {1,6,7,5,7,1,4,6,8,1,8,3},
+        {2,4,5,3,7,4,8,4,9,10,7,5},
         {4,3,8,7,6,7,4,5,6,2,7,10},
-        {3,8,9,6,5,7,7,8,9,10,5,10}
+        {3,8,9,6,5,7,7,8,9,10,5,1}
         };
 
     String[] nombres = {"Juan", "Ana", "Luis", "Maria", "Felipe", "Antonio", "Rosa", "Pedro", "Carmen", "Pablo", "Cristian", "Rodrigo"};
@@ -23,14 +23,14 @@ public class Notas {
 
             // CASE 2 IMPRIMIR TAMBIEN NOTA MEDIA SI HA APROBADO.
             System.out.println("""
-            ***************MENÚ***************
-            *                                *
-            *  1. Ver notas de asignaturas   *
-            *  2. Ver notas de alumnos       * 
-            *  3.                            *
-            *  4.                            *
-            *  5. Salir                      *
-            **********************************
+            ***************MENÚ**********************************
+            *                                                   *
+            *  1. Ver notas de asignaturas                      *
+            *  2. Ver notas de alumnos                          * 
+            *  3. Ver alumnos que repiten                       *
+            *  4. Cambiar la nota de un alumno                  *
+            *  5. Salir                                         *
+            *****************************************************
             """);
             indice = sc.nextInt();
             switch (indice) {
@@ -41,7 +41,10 @@ public class Notas {
                     mostrarNotasAlumnos();
                     break;
                 case 3: 
-                    menuAsignaturas();
+                    mostrarAlumnosSuspensos();
+                    break;
+                case 4:
+                    cambiarNotaAlumno();
                     break;
                 case 5:
                     System.out.println("Saliendo...");
@@ -78,6 +81,36 @@ public class Notas {
         }else System.out.println(nombres[indice] + " ha suspendido");
     }
 
+    private void mostrarAlumnosSuspensos(){
+        int suspendidas = 0;
+        for (int i = 0; i < notas[0].length; i++) { 
+
+            if(notas[0][i] < 5 && notas[1][i] < 5){
+                System.out.printf("%s repite.%n", nombres[i]);
+                continue;
+            }
+
+            for (int j = 0; j < notas.length; j++) {
+                
+                if (notas[j][i] < 5) suspendidas++;
+            }
+            if (suspendidas >= 3) System.out.printf("%s repite.%n", nombres[i]);
+            suspendidas = 0;
+        }
+    }
+
+
+    private void cambiarNotaAlumno(){       
+        int asig = menuAsignaturas();
+        int alumno = menuAlumnos();
+        int nota;
+
+        Scanner sc = new Scanner(System.in);
+        System.out.printf("%s tiene un %d en %s, ¿Cúal es su nueva nota?%n", 
+                        nombres[alumno], notas[asig][alumno], asignaturas[asig]);
+        nota = sc.nextInt();
+        notas[asig][alumno] = nota;
+    }
     // INDICES MENÚS
     
     private int menuAsignaturas(){
