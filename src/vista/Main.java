@@ -1,5 +1,4 @@
 package vista;
-
 import ejercicios.EjerciciosArraysBidimensionales;
 import ejercicios.EjerciciosArraysUnidimensionales;
 import estudioArray.EstudioArrayBidi;
@@ -20,10 +19,11 @@ public class Main {
         System.out.println("Estudio de arrays bidimensionales.");
         EstudioArrayBidi estudioArrayBidi = new EstudioArrayBidi();
         */
-        /* 
+        /*
         System.out.println("Clase notas y alumnos arr bidimensional");
         Notas notas = new Notas();
         */
+
         System.out.println("Ejercicios arrays bidimensionales");
         EjerciciosArraysBidimensionales ejerciciosArraysBidimensionales = new EjerciciosArraysBidimensionales();
     }

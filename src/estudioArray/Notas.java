@@ -68,6 +68,7 @@ public class Notas {
         double sumaNotas = 0;
         double mediaCurso = 0;
         String notasAlumno = "Notas de " + nombres[indice] + ":\n";
+        
         for (int i = 0; i < asignaturas.length; i++) {
             notasAlumno += asignaturas[i] + " - " + notas[i][indice]+"\n";
             
