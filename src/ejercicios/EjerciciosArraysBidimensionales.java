@@ -29,7 +29,7 @@ public class EjerciciosArraysBidimensionales {
     //3.-Diseñar un programa en Java que compruebe si un array de enteros de 5x5, es un cuadrado mágico. Se considera
     //un cuadrado mágico aquel en el que las filas, las columnas y las diagonales suman igual.
 
-    ejercicio3();
+    //ejercicio3();
 
     /*
     4.- Dado un array de enteros de tamaño 5x5, diseñar un programa en Java que lo rellene como en la siguiente figura:
@@ -40,7 +40,7 @@ public class EjerciciosArraysBidimensionales {
     4 3 2 1 0
     */
 
-    //ejercicio4();
+    ejercicio4();
     }
     
     private void ejercicio1(){
@@ -78,12 +78,49 @@ public class EjerciciosArraysBidimensionales {
     }
 
     private void ejercicio3(){ 
+        int sumaFilas = 0, sumaColumnas = 0, diagonal = 0, diagonalInversa = 0, contArrSumas = 0;
+        boolean magico = true;
+        String resultado = "";
         int[][] arr = {
                         {1,15,14,4},
                         {12,6,7,9},
                         {8,10,11,5},
                         {13,3,2,16}
                     };
+        int[] arrSumas = new int[arr.length*2+2];
+    
+        for (int i = 0; i < arr.length; i++) {        
+
+            diagonal+= arr[i][i];
+            diagonalInversa+= arr[i][arr.length-i-1];
+
+            for (int j = 0; j < arr.length; j++) {         
+                sumaFilas += arr[i][j];
+                sumaColumnas += arr[j][i];
+            }
+
+            arrSumas[contArrSumas] = sumaFilas;
+            arrSumas[contArrSumas+1] = sumaColumnas;
+
+            sumaFilas = 0;
+            sumaColumnas = 0;
+            contArrSumas+=2;           
+        }
+        arrSumas[contArrSumas] = diagonal;
+        arrSumas[contArrSumas+1] = diagonalInversa;
+
+        System.out.println(Arrays.toString(arrSumas));
+
+        for (int i = 1; i < arrSumas.length; i++) {
+            if (arrSumas[i] != arrSumas[i-1]) {
+                magico = false;
+                break;
+            }
+        }
+
+        resultado += (magico) ? "El cuadrado es mágico" : "El cuadrado no es mágico";
+        System.out.println(resultado);
+    /*
         int sum = 0, sumaF = 0, sumaC = 0, sumaD = 0, sumaDI = 0;
         boolean magico = false;
 
@@ -103,9 +140,12 @@ public class EjerciciosArraysBidimensionales {
         }else System.out.println("no");
         
         System.out.printf("%d, %d, %d, %d", sumaF/arr.length, sumaC/arr.length, sumaD, sumaDI);
+    */
     }
-
+    
     private void ejercicio4(){
-        int[][] arr = new int[5][5];
+        int[][] arr =  new int[5][5];
+
+
     }
 }
