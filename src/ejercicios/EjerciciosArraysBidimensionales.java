@@ -151,7 +151,7 @@ public class EjerciciosArraysBidimensionales {
         int diagonal = 0;
         int diagonalInv = arr.length -1;
 
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < arr.length; i++) {
             for (int j = 0; j < cont; j++) {
                 arr[j][i+diagonal] = cont-1;
                 arr[arr.length-1-j][diagonalInv-i] = cont-1;
