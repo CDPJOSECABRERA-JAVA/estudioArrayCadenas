@@ -4,6 +4,7 @@ import ejercicios.EjerciciosArraysUnidimensionales;
 import estudioArray.EstudioArrayBidi;
 import estudioArray.EstudioArrayUnidimensional;
 import estudioArray.Notas;
+import estudioExcepciones.EstudioExcepciones;
 
 public class Main {
     public static void main(String[] args) throws Exception {
@@ -23,8 +24,13 @@ public class Main {
         System.out.println("Clase notas y alumnos arr bidimensional");
         Notas notas = new Notas();
         */
-
+        
         System.out.println("Ejercicios arrays bidimensionales");
         EjerciciosArraysBidimensionales ejerciciosArraysBidimensionales = new EjerciciosArraysBidimensionales();
+        
+        /* 
+        System.out.println("Estudio excepciones");
+        EstudioExcepciones estudioExcepciones = new EstudioExcepciones();
+        */
     }
 }

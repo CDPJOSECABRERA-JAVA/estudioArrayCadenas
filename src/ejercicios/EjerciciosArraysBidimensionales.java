@@ -40,29 +40,55 @@ public class EjerciciosArraysBidimensionales {
     4 3 2 1 0
     */
 
-    ejercicio4();
+    //ejercicio4();
+
+    /*
+        5. Crear una matriz de 5x5 con todos los números enteros comprendidos entre 1 y 25 de forma que cincida la suma
+        de los elementos de cada fila, de cada columna o de las diagonales principales.
+    */
+    ejercicio5();
+
+    /* 
+        6.- Diseñar un programa que me permita almacenar 10 boletos de primitiva, luego genere un sorteo y me diga
+            cuantos aciertos tiene cada boleto.
+    */
+
+    /* 
+        7.- Diseñar un programa que genere un sorteo de primitiva y luego empiece a generar boletos hasta que tengamos 6
+        aciertos.
+    */
     }
     
     private void ejercicio1(){
 
-        int[][] arr = {{3,2},{50,7},{1,11}};
-        int numMenorF, numMayorF, numMayor = arr[0][0], numMenor = arr[0][0];
+        int[][] arr = {{3,2},
+                       {50,7},
+                       {1,11}
+                    };
+
+        int numMayorTabla = arr[0][0], numMenorTabla = arr[0][0];
+        int menorFila, mayorFila;
+
+        int[] mayoresFilaArr = new int[arr.length];
+        int[] menoresFilaArr = new int[arr.length];
         
         for(int i = 0; i < arr.length; i++){
-            numMayorF = arr[i][0];
-            numMenorF = arr[i][0];
-            for(int j = 0; j < arr[i].length; j++){               
-                if (arr[i][j] > numMayorF) numMayorF = arr[i][j];
-                if (arr[i][j] < numMenorF) numMenorF = arr[i][j];
+            menorFila = arr[i][0];
+            mayorFila = arr[i][0];
+            for(int j = 0; j < arr[i].length; j++){                               
+                
+                if(arr[i][j] <= menorFila) menoresFilaArr[i] = arr[i][j];
+                if (arr[i][j] >= mayorFila) mayoresFilaArr[i] = arr[i][j];
 
-                if (numMayorF > numMayor) numMayor = numMayorF;
-                if (numMenorF < numMenor) numMenor = numMenorF;
+                if(numMayorTabla < arr[i][j]) numMayorTabla = arr[i][j];
+                if (numMenorTabla > arr[i][j]) numMenorTabla = arr[i][j];
             }
-            System.out.printf("%nFila %d:%n Numero mayor: %d.%n Numero menor: %d.", i+1, numMayorF, numMenorF);
-        } 
-        System.out.printf("%nNUMERO MAYOR: %d%nNUMERO MENOR: %d", numMayor, numMenor);     
-    }
 
+            System.out.printf("Fila %d: Mayor: %d Menor: %d%n", i, mayoresFilaArr[i], menoresFilaArr[i]);
+        }
+        System.out.printf("%nNUMERO MAYOR: %d%nNUMERO MENOR: %d", numMayorTabla, numMenorTabla);
+    }
+    
     private void ejercicio2(){
         int[][] arr = new int[5][5];
 
@@ -106,6 +132,7 @@ public class EjerciciosArraysBidimensionales {
             sumaColumnas = 0;
             contArrSumas+=2;           
         }
+        
         arrSumas[contArrSumas] = diagonal;
         arrSumas[contArrSumas+1] = diagonalInversa;
 
@@ -170,4 +197,34 @@ public class EjerciciosArraysBidimensionales {
 
 
     }
+
+    private void ejercicio5(){
+        int[][] arr =  new int[5][5];
+        int x = 0, y = Math.round(arr[0].length/2);
+        for (int i = 1; i <= arr.length*arr.length; i++) {
+            
+            arr[x][y] = i;
+
+
+            if(i % 5 == 0){
+                if (x == 0) x = arr.length -1;
+                else x++;
+            }else{
+                if (x == 0) x = arr.length -1;
+                else x--;
+                
+                if (y == arr.length-1) y = 0;
+                else y++;
+            }
+
+        }
+
+        for (int i = 0; i < arr.length; i++) {
+            System.out.println(Arrays.toString(arr[i]));
+        }
+
+    }
+
+
+    // - M E T O D O S  E X T E R N O
 }
