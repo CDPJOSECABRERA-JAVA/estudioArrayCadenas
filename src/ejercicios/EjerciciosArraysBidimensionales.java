@@ -46,18 +46,24 @@ public class EjerciciosArraysBidimensionales {
         5. Crear una matriz de 5x5 con todos los números enteros comprendidos entre 1 y 25 de forma que cincida la suma
         de los elementos de cada fila, de cada columna o de las diagonales principales.
     */
-    ejercicio5();
+
+    //ejercicio5();
 
     /* 
         6.- Diseñar un programa que me permita almacenar 10 boletos de primitiva, luego genere un sorteo y me diga
             cuantos aciertos tiene cada boleto.
     */
 
+    //ejercicio6();
+    
     /* 
         7.- Diseñar un programa que genere un sorteo de primitiva y luego empiece a generar boletos hasta que tengamos 6
         aciertos.
     */
-    }
+
+    ejercicio7();
+    
+}
     
     private void ejercicio1(){
 
@@ -199,25 +205,19 @@ public class EjerciciosArraysBidimensionales {
     }
 
     private void ejercicio5(){
+        
         int[][] arr =  new int[5][5];
         int x = 0, y = Math.round(arr[0].length/2);
+
         for (int i = 1; i <= arr.length*arr.length; i++) {
             
-            arr[x][y] = i;
+            if(i%5 == 0) arr[x++][y] = i;
+            else arr[x--][y++] = i;
 
-
-            if(i % 5 == 0){
-                if (x == 0) x = arr.length -1;
-                else x++;
-            }else{
-                if (x == 0) x = arr.length -1;
-                else x--;
-                
-                if (y == arr.length-1) y = 0;
-                else y++;
-            }
-
+            if (x < 0) x = arr.length -1;
+            if (y > arr.length-1) y = 0;
         }
+
 
         for (int i = 0; i < arr.length; i++) {
             System.out.println(Arrays.toString(arr[i]));
@@ -225,6 +225,90 @@ public class EjerciciosArraysBidimensionales {
 
     }
 
+    private void ejercicio6(){
+        int[][] boletosPrimitivas = new int[10][6];
+        int[] sorteoPrimitiva = new int[6];
 
-    // - M E T O D O S  E X T E R N O
+        // LLENAR LAS 10 PRIMITIVAS DE NÚMEROS QUE NO SE REPITAN
+        for (int i = 0; i < boletosPrimitivas.length; i++) {
+            boletosPrimitivas[i] = rellenarBoleto(boletosPrimitivas[i]);
+        }
+
+        //LLENAR EL SORTEO.
+        sorteoPrimitiva = rellenarBoleto(sorteoPrimitiva);
+
+        //COMPARAR BOLETOS CON SORTEO Y SACAR RESULTADOS
+        int aciertos = 0;
+
+        for (int i = 0; i < boletosPrimitivas.length; i++) {
+            System.out.println("SORTEO: " + Arrays.toString(sorteoPrimitiva)+"\n");
+            for (int j = 0; j < boletosPrimitivas[i].length; j++) {
+               if (seRepite(sorteoPrimitiva, boletosPrimitivas[i][j])){               
+                aciertos++;
+                System.out.printf("%3d!!", boletosPrimitivas[i][j]);
+
+               }else System.out.printf("%3d", boletosPrimitivas[i][j]);
+            }
+            System.out.println("\nBoleto " + (i+1) + ": " + aciertos + " aciertos.\n");
+            System.out.println();
+            aciertos = 0;
+
+        }
+
+    }
+
+    private void ejercicio7(){
+        int[] sorteoPrimitiva = new int[6], primitiva = new int[6];
+        sorteoPrimitiva = rellenarBoleto(sorteoPrimitiva);
+
+        int intentos = 0, aciertos;
+
+        do {
+            intentos++;
+            aciertos = 0;
+
+            primitiva = rellenarBoleto(primitiva);
+
+            for (int i = 0; i < primitiva.length; i++) {
+                
+                if (seRepite(sorteoPrimitiva, primitiva[i])) aciertos++;
+            }
+        } while (aciertos != 6);
+
+        System.out.println("Te ha tocado la primitiva en " + intentos + " intentos");
+        System.out.println("El boleto premiado es: " + Arrays.toString(primitiva));
+        System.out.println("El boleto del sorteo es: " + Arrays.toString(sorteoPrimitiva));
+
+
+
+        
+        
+    }
+    // - M E T O D O S  E X T E R N O S
+    
+    private int[] rellenarBoleto(int[] boleto){
+        for (int i = 0; i < boleto.length; i++) {
+            boleto[i] = generarNumRandomSinRepetir(boleto);       
+        }
+        return boleto;
+    }
+
+    private int generarNumRandomSinRepetir(int[] boleto){       
+        int num;
+        do {            
+            num = generarNumRandomBoleto();           
+        } while (seRepite(boleto, num));
+        return num;
+    }
+
+    private boolean seRepite(int[] boleto, int n){
+        for (int i = 0; i < boleto.length; i++) {
+            if (boleto[i] == n) return true; 
+        }
+        return false;
+    }
+    
+    private int generarNumRandomBoleto(){
+        return (int)(Math.floor(Math.random()*49+1));
+    }
 }
