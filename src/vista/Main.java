@@ -30,15 +30,16 @@ public class Main {
         System.out.println("Ejercicios arrays bidimensionales");
         EjerciciosArraysBidimensionales ejerciciosArraysBidimensionales = new EjerciciosArraysBidimensionales();
         */
-        
+        /*
         System.out.println("Estudio excepciones");
         try{
             EstudioExcepciones estudioExcepciones = new EstudioExcepciones();
         }catch(MenorEdadException e){
             System.out.println(e.getMessage());
         }
+        */
        
         
-        //JuegoCartas juegoCartas = new JuegoCartas();
+        JuegoCartas juegoCartas = new JuegoCartas();
     }
 }
