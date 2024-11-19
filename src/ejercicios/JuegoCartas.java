@@ -26,7 +26,7 @@ public class JuegoCartas {
                 jugador[i][1] = numRandom(0, 10);
             }
         }
-    }
+    
 
     public static int numRandom(int inf, int sup){
         return (int)(Math.random()*(sup-inf +1) + inf);
