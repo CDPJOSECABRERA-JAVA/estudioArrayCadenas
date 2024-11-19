@@ -3,8 +3,10 @@ package estudioExcepciones;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import excepciones.MenorEdadException;
+
 public class EstudioExcepciones {
-    public EstudioExcepciones(){
+    public EstudioExcepciones() throws MenorEdadException{
         try {
             
             //int div = 4/0;
@@ -51,6 +53,14 @@ public class EstudioExcepciones {
                 sigue = true;
             }
         } while (sigue);
-
-    }
+        
+            calculaEdad(17);
+       
+        
+            }
+        
+            private void calculaEdad(int edad) throws MenorEdadException {
+                // TODO Auto-generated method stub
+                if(edad<18) throw new MenorEdadException();
+            }
 }
