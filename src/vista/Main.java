@@ -38,8 +38,6 @@ public class Main {
             System.out.println(e.getMessage());
         }
         */
-       
-        
         JuegoCartas juegoCartas = new JuegoCartas();
     }
 }

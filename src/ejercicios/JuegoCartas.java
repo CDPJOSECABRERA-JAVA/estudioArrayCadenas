@@ -16,9 +16,15 @@ public class JuegoCartas {
 
         int[][] jugador1 = new int[4][2];
         int[][] jugador2 = new int[4][2];
+
+        int n = generarNumRandom(0, 9);
+        int p = generarNumRandom(0, 3);
+        System.out.println("CARTA ELEGIDA: " + cartas[n] + palos[p]);
+        int score1 = 0;
+        int score2 = 0;
         
-        int i = 0;
-        while (i < 10) {
+        int c = 0;
+        while (c < 10) {
 
             System.out.println("""
                     ELIGE UNA OPCIÓN
@@ -47,11 +53,21 @@ public class JuegoCartas {
     
                     manosJ1 += manoJ1actual;
                     manosJ2 += manoJ2actual;
-                    i++;
-                    if (i == 10) {
+                    c++;
+
+                    for (int i = 0; i < jugador2.length; i++) {
+                        if (jugador1[i][0] == cartas[n] && jugador1[i][1] == p) score1++;
+                        if (jugador2[i][0] == cartas[n] && jugador2[i][1] == p) score2++;
+                    }
+
+                    if (c == 10) {
                         System.out.println("EL JUEGO HA FINALIZADO DEBIDO A QUE SE HA JUGADO 10 RONDAS");
                         System.out.println("HISTORIAL DE CARTAS:");
                         System.out.println(manosJ1 + manosJ2);
+
+                        System.out.println("PUNTUACIONES");
+                        System.out.println("JUGADOR 1: " + score1);
+                        System.out.println("JUGADOR 2: " + score2);
                     }
                     break;
                 case 3:
