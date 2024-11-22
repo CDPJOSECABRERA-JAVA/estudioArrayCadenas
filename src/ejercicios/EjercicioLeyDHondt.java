@@ -3,17 +3,32 @@ import java.util.Scanner;
 
 public class EjercicioLeyDHondt {
     public EjercicioLeyDHondt(){
-        
-        int votantesTotal = 677904;
+       
+        int votantesTotal = 1564082;
         int votosTotal;
-        int totalEscanios = 50;
         
-        String[] partidos = {"PACA", "PASON", "PECA", "PRISA", "PELO", "PEDO", "PACO"};
-
+        /* 
+        int totalEscanios = 12;
+        String[] partidos = {"PP", "PSOE", "VOX", "SUMAR", "P ANIMALISTA", "FRENTE OBRERO", "RECORTES CERO"};
+        
         String[] datosGruposStr = {"GRUPO", "VOTOS", "% CENSO", "% EMITIDOS", "ESCAÑOS"};
         double[][] datosGrupos = new double[7][4];
+        */
+        /* *
+        int totalEscanios = 7;
+        String[] partidos = {"PP", "PSOE", "VOX"};
+        
+        String[] datosGruposStr = {"GRUPO", "VOTOS", "% CENSO", "% EMITIDOS", "ESCAÑOS"};
+        double[][] datosGrupos = new double[partidos.length][4];
+        */
 
+        int totalEscanios = 9;
+        String[] partidos = {"PP", "PSOE", "VOX", "P4", "P5", "P6"};
+        
+        String[] datosGruposStr = {"GRUPO", "VOTOS", "% CENSO", "% EMITIDOS", "ESCAÑOS"};
+        double[][] datosGrupos = new double[partidos.length][4];
         double votosEmitidos=0, abstencion=0, votosValidos=0, votosBlanco=0, votosNulos=0;
+
         boolean bucle = true;
 
         
@@ -46,7 +61,7 @@ public class EjercicioLeyDHondt {
 
 
         System.out.println();
-        double[][] arrDhondt = generarArrDhondt(datosGrupos, totalEscanios);
+        double[][] arrDhondt = generarArrDhondt(datosGrupos, totalEscanios, partidos);
         repartirEscanios(arrDhondt, datosGrupos, totalEscanios);
         imprimirArrDhondt(arrDhondt, partidos);
     
@@ -149,9 +164,9 @@ public class EjercicioLeyDHondt {
     
     // ARRAY DE ESCAÑOS
 
-    public static double[][] generarArrDhondt(double[][] datosGrupos, int totalEscanios){
+    public static double[][] generarArrDhondt(double[][] datosGrupos, int totalEscanios, String[] partidos){
     
-    double[][] arr = new double[7][totalEscanios];
+    double[][] arr = new double[partidos.length][totalEscanios];
 
     for (int i = 0; i < arr.length; i++) {
         double n = datosGrupos[i][0];
@@ -177,24 +192,27 @@ public class EjercicioLeyDHondt {
 
     public static void repartirEscanios(double[][] arrDhondt, double[][] datosGrupos, int totalEscanios){
 
-        int mayor;
+        int PosPartidoMasVotos;
         
+
         for (int i = 0; i < totalEscanios; i++) {
-            mayor = 0;
+            
+            PosPartidoMasVotos = 0;
+
             for (int g = 1; g < arrDhondt.length; g++) {
                 
-                double valorActual = arrDhondt[g][(int)datosGrupos[g][3]];
-                double valorMayor = arrDhondt[mayor][(int)datosGrupos[mayor][3]];
-
-
-                if( valorActual > valorMayor) mayor = g;  //COMPARO VALORES DEL ARRAY DHONDT Y ME QUEDO CON EL MAYOR
-
-                else if(valorMayor == valorActual){ // SI ESOS VALORES SON IGUALES COMPARO LOS VOTOS
+                double grupoActual = arrDhondt[g][(int)datosGrupos[g][3]];
+                double grupoMasVotos = arrDhondt[PosPartidoMasVotos][(int)datosGrupos[PosPartidoMasVotos][3]];
                 
-                    mayor = (datosGrupos[g][0] > datosGrupos[mayor][0]) ? g : mayor;
+
+                if( grupoActual > grupoMasVotos) PosPartidoMasVotos = g;  //COMPARO VALORES DEL ARRAY DHONDT Y ME QUEDO CON EL MAYOR
+
+                else if(grupoMasVotos == grupoActual){ // SI ESOS VALORES SON IGUALES COMPARO LOS VOTOS
+                
+                    PosPartidoMasVotos = (datosGrupos[g][0] > datosGrupos[PosPartidoMasVotos][0]) ? g : PosPartidoMasVotos;
                 }
             }
-            datosGrupos[mayor][3]++;
+            datosGrupos[PosPartidoMasVotos][3]++;
         }
     }
 

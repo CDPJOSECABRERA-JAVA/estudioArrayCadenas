@@ -39,11 +39,13 @@ public class Main {
             System.out.println(e.getMessage());
         }
         */
-        /*
+        /* 
         System.out.println("Juego de cartas");
         JuegoCartas juegoCartas = new JuegoCartas();
         */
+        
         System.out.println("Ejercicio Ley D´Hontd");
         EjercicioLeyDHondt ejercicioLeyDHondt = new EjercicioLeyDHondt();
+        
     }
 }
