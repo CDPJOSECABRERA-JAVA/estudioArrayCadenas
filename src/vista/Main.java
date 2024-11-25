@@ -6,6 +6,7 @@ import ejercicios.JuegoCartas;
 import estudioArray.EstudioArrayBidi;
 import estudioArray.EstudioArrayUnidimensional;
 import estudioArray.Notas;
+import estudioCadenas.EstudioCadenas;
 import estudioExcepciones.EstudioExcepciones;
 import excepciones.MenorEdadException;
 
@@ -43,9 +44,11 @@ public class Main {
         System.out.println("Juego de cartas");
         JuegoCartas juegoCartas = new JuegoCartas();
         */
-        
+        /* 
         System.out.println("Ejercicio Ley D´Hontd");
         EjercicioLeyDHondt ejercicioLeyDHondt = new EjercicioLeyDHondt();
-        
+        */
+        System.out.println("Estudio cadenas");
+        EstudioCadenas estudioCadenas = new EstudioCadenas();
     }
 }
