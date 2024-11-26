@@ -134,12 +134,31 @@ public class EjercicioCadenas {
         }
         if (isbnArray.length != 5) throw new IsbnException();
 
-        isbn.replace("-", "");
-        int isbnNum = Integer.parseInt(isbn);
+        String isbnSinGuion = isbn.replace("-", "");
         
+
+        String[] digitos = isbnSinGuion.split("");
 
         //Realizar operaciones
         int suma = 0;
+        int n = 0;
+        try {
+            for (int i = 0; i < digitos.length -1; i++) {
+                n = Integer.parseInt(digitos[i]);
+                if ((i+1)%2 != 0) suma += n;
+                else suma += (n*3);
+            }
+        } catch (Exception e) {
+            throw new IsbnException();
+        }
+        int digitoCalculado = 10 - (suma%10);
+
+
+        // Comparar ultimo digito con el digito calculado
+        if (Integer.parseInt(digitos[digitos.length-1]) != digitoCalculado) throw new IsbnException();
+        else System.out.println("el ISBN: '" + isbn + "', es correcto.");
+
+
         
     }
 }
