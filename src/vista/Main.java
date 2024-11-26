@@ -1,4 +1,5 @@
 package vista;
+import ejercicios.EjercicioCadenas;
 import ejercicios.EjercicioLeyDHondt;
 import ejercicios.EjerciciosArraysBidimensionales;
 import ejercicios.EjerciciosArraysUnidimensionales;
@@ -48,7 +49,13 @@ public class Main {
         System.out.println("Ejercicio Ley D´Hontd");
         EjercicioLeyDHondt ejercicioLeyDHondt = new EjercicioLeyDHondt();
         */
+         
+        /*      
         System.out.println("Estudio cadenas");
-        EstudioCadenas estudioCadenas = new EstudioCadenas();
+        EstudioCadenas estudioCadenas = new EstudioCadenas(); */
+
+        System.out.println("Ejercicios cadenas");
+        EjercicioCadenas ejercicioCadenas = new EjercicioCadenas();
+
     }
 }
