@@ -1,5 +1,6 @@
 package ejercicios;
 
+import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -17,21 +18,43 @@ public class EjercicioCadenas {
         //3.-Crea un programa que compruebe si un dni es correcto (8 números y una letra) Recordad que la letra 
         //se calcula dividiendo el numero entre 23 y mirando el resto (Mirad en internet la letra con que se 
         //corresponde) si el dni no es correcto, manda una excepion DniException;
-        //ejercicio3();
+        //CompruebaDni compruebaDni = new CompruebaDni();
 
         //4.- Comprobación ISBN 13.
-        ejercicio4();
+        //ejercicio4();
+
+        //5.- MOSTRAR POR PANTALLA UNA TARJETA DE CLAVES
+        //  1   2   3   4   5   6
+    //  A  rellenar de números del 100 al 999 que no se repitan.
+    //  B  El programa pregunta por una coordenada (ej c4) y mirara si es correcto.
+    //  C  3 intentos. (La misma coordenada)
+    //  D
+    //  E
+        ejercicio5();
     }
 
     public void ejercicio1(){
         System.out.println("Introduce una frase:");
         String frase = scString();
-        
-        String[] frasePartida = frase.split(" ");
 
-        System.out.println("Palabras de esa frase:");
-        for (int i = 0; i < frasePartida.length; i++) {
-            System.out.println((i+1) + ". " + frasePartida[i]);
+        String palabra = "";
+        char caracter;
+        int cont = 0;
+        
+        for (int i = 0; i < frase.length(); i++) {
+            caracter = frase.charAt(i);
+            if(caracter != ' '){
+                palabra += caracter;
+                cont++;
+            }
+                if(caracter == ' ' || i == frase.length()-1){
+                if(cont > 0) System.out.println(palabra);
+                palabra = "";
+                cont = 0;
+            }
+
+            
+            
         }
 
     }
@@ -41,14 +64,31 @@ public class EjercicioCadenas {
         String frase = scString();
         String fraseModificada = frase.replace(" ", "").toLowerCase();
         System.out.println(fraseModificada);
+       
+        char letraActual, letraLadoOpuesto;
+        boolean esPalindroma = true;
 
-        String fraseVolteada = voltearFrase(fraseModificada);
+        for (int i = 0; i < (fraseModificada.length()-1) /2; i++) {
+            letraActual = fraseModificada.charAt(i);
+            letraLadoOpuesto = fraseModificada.charAt(fraseModificada.length()-1-i);
+
+            if (letraActual != letraLadoOpuesto) {
+                esPalindroma = false;
+                break;
+            }
+        }
+
+        if (esPalindroma) System.out.printf("La frase: '%s' ES palíndroma.", frase);
+        else System.out.printf("La frase: '%s' NO es palíndroma.", frase);
+        /* String fraseVolteada = voltearFrase(fraseModificada);
 
         if (fraseModificada.equals(fraseVolteada)) System.out.printf("'%s' es una frase palíndroma", frase);
-        else System.out.printf("'%s' NO es una frase palíndroma", frase);
+        else System.out.printf("'%s' NO es una frase palíndroma", frase); */
     }
 
-    public void ejercicio3(){
+    
+    
+    /* public void ejercicio3(){
 
         System.out.println("Introduce el DNI:");
         String dni = scString();
@@ -61,7 +101,8 @@ public class EjercicioCadenas {
             System.out.println(e.getMessage());
         }
         if (correcto) System.out.println("El dni " + dni + " es correcto");
-    }
+    } */
+
 
     public void ejercicio4(){
         System.out.println("Introduce el ISBN:");
@@ -74,6 +115,58 @@ public class EjercicioCadenas {
         }
 
 
+    }
+    
+    public void ejercicio5(){
+        int[][] tablaClaves = new int[5][6];
+        rellenarArrayBidi(tablaClaves);
+        
+        imprimirTablaClaves(tablaClaves);
+    }
+
+    //METODO RELLENAR ARRAY BIDI
+    public void rellenarArrayBidi(int[][] tablaClaves){
+
+        int numRandom;
+        for (int i = 0; i < tablaClaves.length; i++) {
+            for (int j = 0; j < tablaClaves[i].length; j++) {
+                numRandom = (int)(Math.random()*(999-100 +1) + 100);
+                if (comprobarRepeticion(numRandom, tablaClaves)) j--;
+                else tablaClaves[i][j] = numRandom;
+            }
+        }
+
+
+    }
+    
+    
+    //METODO COMPROBAR REPETICION ARRAY BIDI
+    boolean comprobarRepeticion(int n, int[][] tabla){
+        for (int i = 0; i < tabla.length; i++) {
+            for (int j = 0; j < tabla.length; j++) {
+                if (n == tabla[i][j]) return true;
+            }
+        }
+        return false;
+    }
+
+    //METODO IMPRIMIR TABLA CLAVES
+    public void imprimirTablaClaves(int[][] tabla){
+        String[] filas = {"A", "B", "C", "D", "E"};
+        System.out.printf("%s", "");
+        for (int i = 0; i < filas.length; i++) {     
+            System.out.printf("%6d", i+1);
+        }
+        System.out.println();
+        
+        for (int i = 0; i < tabla.length; i++) {
+            
+            System.out.printf("%6s", filas[i]);
+            for (int j = 0; j < tabla[i].length; j++) {
+                System.out.printf("%6d", tabla[i][j]);
+            }
+            System.out.println();
+        }
     }
     //METODO PARA DAR LA VUELTA A UNA FRASE
     public String voltearFrase(String frase){
@@ -93,7 +186,7 @@ public class EjercicioCadenas {
         return sc.nextLine();
     }
 
-    //COMPROBAR DNI
+    /* //COMPROBAR DNI
     public void comprobarDni(String dni) throws DniException{
 
         //comprueba tamaño de cadena
@@ -118,7 +211,7 @@ public class EjercicioCadenas {
 
         if (letras[posLetra] != letra) throw new DniException();
         
-    }
+    } */
 
     //COMPROBAR ISBN
     public void comprobarIsbn(String isbn) throws IsbnException{
