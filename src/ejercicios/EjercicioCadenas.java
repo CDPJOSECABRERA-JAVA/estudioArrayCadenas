@@ -23,14 +23,8 @@ public class EjercicioCadenas {
         //4.- Comprobación ISBN 13.
         //ejercicio4();
 
-        //5.- MOSTRAR POR PANTALLA UNA TARJETA DE CLAVES
-        //  1   2   3   4   5   6
-    //  A  rellenar de números del 100 al 999 que no se repitan.
-    //  B  El programa pregunta por una coordenada (ej c4) y mirara si es correcto.
-    //  C  3 intentos. (La misma coordenada)
-    //  D
-    //  E
-        ejercicio5();
+        //tarjeta claves
+        TarjetaClaves tarjetaClaves = new TarjetaClaves();
     }
 
     public void ejercicio1(){
@@ -116,58 +110,8 @@ public class EjercicioCadenas {
 
 
     }
-    
-    public void ejercicio5(){
-        int[][] tablaClaves = new int[5][6];
-        rellenarArrayBidi(tablaClaves);
-        
-        imprimirTablaClaves(tablaClaves);
-    }
+ 
 
-    //METODO RELLENAR ARRAY BIDI
-    public void rellenarArrayBidi(int[][] tablaClaves){
-
-        int numRandom;
-        for (int i = 0; i < tablaClaves.length; i++) {
-            for (int j = 0; j < tablaClaves[i].length; j++) {
-                numRandom = (int)(Math.random()*(999-100 +1) + 100);
-                if (comprobarRepeticion(numRandom, tablaClaves)) j--;
-                else tablaClaves[i][j] = numRandom;
-            }
-        }
-
-
-    }
-    
-    
-    //METODO COMPROBAR REPETICION ARRAY BIDI
-    boolean comprobarRepeticion(int n, int[][] tabla){
-        for (int i = 0; i < tabla.length; i++) {
-            for (int j = 0; j < tabla.length; j++) {
-                if (n == tabla[i][j]) return true;
-            }
-        }
-        return false;
-    }
-
-    //METODO IMPRIMIR TABLA CLAVES
-    public void imprimirTablaClaves(int[][] tabla){
-        String[] filas = {"A", "B", "C", "D", "E"};
-        System.out.printf("%s", "");
-        for (int i = 0; i < filas.length; i++) {     
-            System.out.printf("%6d", i+1);
-        }
-        System.out.println();
-        
-        for (int i = 0; i < tabla.length; i++) {
-            
-            System.out.printf("%6s", filas[i]);
-            for (int j = 0; j < tabla[i].length; j++) {
-                System.out.printf("%6d", tabla[i][j]);
-            }
-            System.out.println();
-        }
-    }
     //METODO PARA DAR LA VUELTA A UNA FRASE
     public String voltearFrase(String frase){
         String fraseVolteada = "";
