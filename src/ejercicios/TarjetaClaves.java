@@ -29,12 +29,12 @@ public class TarjetaClaves {
 
             if (claveIntroducida == tablaClaves[f][c]) {
                 System.out.println("Clave acertada.");
-                System.out.println("Has acertado la clave en " + intentos + " intentos.");
+                System.out.println("Has acertado la clave en " + (intentos+1) + " intentos.");
                 break;
             }else{
                 System.out.println("La clave introducida no es correcta");
-                System.out.println("Te quedan ");
                 intentos++;
+                System.out.println("Te quedan " +  (3-intentos) + " intentos.");
             }
             
         } while (intentos < 3);
