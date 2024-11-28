@@ -1,5 +1,7 @@
 package ejercicios;
 
+import java.lang.reflect.Array;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class TarjetaClaves {
@@ -11,23 +13,31 @@ public class TarjetaClaves {
     //  D
     //  E
     public TarjetaClaves(){
-        int[][] tablaClaves = new int[5][6];
+        String[][] tablaClaves = {
+            {"", "1", "2", "3", "4", "5","6"},
+            {"A", "", "", "", "", "", ""},
+            {"B", "", "", "", "", "", ""},
+            {"C", "", "", "", "", "", ""},
+            {"D", "", "", "", "", "", ""},
+            {"E", "", "", "", "", "", ""}
+        };
+        
         rellenarArrayBidi(tablaClaves);
         imprimirTablaClaves(tablaClaves);
 
-        String fStr = "ABCDE";
+        int f = (int)Math.floor(Math.random()*5+1);
+        System.out.println(f);
 
-        int f = (int)Math.floor(Math.random()*5);
-        int c = (int)Math.floor(Math.random()*6);
+        int c = (int)Math.floor(Math.random()*6+1);
         
         int intentos = 0;
         int claveIntroducida;
-       
-        do {
-            System.out.println("Introduce la clave: " + fStr.charAt(f) +""+ (c+1));
+      
+         do {
+            System.out.println("Introduce la clave: " + tablaClaves[f][0] +""+ c);
             claveIntroducida = scInt();
 
-            if (claveIntroducida == tablaClaves[f][c]) {
+            if (String.valueOf(claveIntroducida).equals(tablaClaves[f][c])) {
                 System.out.println("Clave acertada.");
                 System.out.println("Has acertado la clave en " + (intentos+1) + " intentos.");
                 break;
@@ -42,14 +52,14 @@ public class TarjetaClaves {
 
     
     //METODO RELLENAR ARRAY BIDI
-    public void rellenarArrayBidi(int[][] tablaClaves){
+    public void rellenarArrayBidi(String[][] tablaClaves){
 
         int numRandom;
-        for (int i = 0; i < tablaClaves.length; i++) {
-            for (int j = 0; j < tablaClaves[i].length; j++) {
+        for (int i = 1; i < tablaClaves.length; i++) {
+            for (int j = 1; j < tablaClaves[i].length; j++) {
                 numRandom = (int)(Math.random()*(999-100 +1) + 100);
-                if (comprobarRepeticion(numRandom, tablaClaves)) j--;
-                else tablaClaves[i][j] = numRandom;
+                if (comprobarRepeticion(String.valueOf(numRandom), tablaClaves)) j--;
+                else tablaClaves[i][j] = String.valueOf(numRandom);
             }
         }
 
@@ -58,32 +68,24 @@ public class TarjetaClaves {
     
     
     //METODO COMPROBAR REPETICION ARRAY BIDI
-    boolean comprobarRepeticion(int n, int[][] tabla){
+    boolean comprobarRepeticion(String n, String[][] tabla){
         for (int i = 0; i < tabla.length; i++) {
             for (int j = 0; j < tabla.length; j++) {
-                if (n == tabla[i][j]) return true;
+                if (n.equals(tabla[i][j])) return true;
             }
         }
         return false;
     }
 
     //METODO IMPRIMIR TABLA CLAVES
-    public void imprimirTablaClaves(int[][] tabla){
-        String[] filas = {"A", "B", "C", "D", "E"};
-        System.out.printf("%5s", "");
-        for (int i = 0; i < tabla[0].length; i++) {     
-            System.out.printf("%6d", i+1);
-        }
-        System.out.println();
-        
+    public void imprimirTablaClaves(String[][] tabla){
         for (int i = 0; i < tabla.length; i++) {
-            
-            System.out.printf("%6s", filas[i]);
             for (int j = 0; j < tabla[i].length; j++) {
-                System.out.printf("%6d", tabla[i][j]);
+                System.out.printf("%6s",tabla[i][j]);  
             }
             System.out.println();
         }
+        
     }
 
     //PEDIR STRING
