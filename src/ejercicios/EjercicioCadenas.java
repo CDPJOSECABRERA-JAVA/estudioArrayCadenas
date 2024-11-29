@@ -24,7 +24,13 @@ public class EjercicioCadenas {
         //ejercicio4();
 
         //tarjeta claves
-        TarjetaClaves tarjetaClaves = new TarjetaClaves();
+        //TarjetaClaves tarjetaClaves = new TarjetaClaves();
+
+        //Ejercicio codigo de barras
+        CodigoBarras codigoBarras = new CodigoBarras();
+
+        //Ejercicio que encripte y desencripte una frase "Atacaremos al amanecer de la primera luna de Marzo"
+        // int[] clave = {3,4,9,6,1,7,0,8,5,2} de 10 en 10 caracteres
     }
 
     public void ejercicio1(){
