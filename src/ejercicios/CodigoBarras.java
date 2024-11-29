@@ -39,6 +39,12 @@ public class CodigoBarras {
             if ((i+1)%2 != 0) suma += digito;
             else suma += digito*3;
         }
-        System.out.println(suma);
+
+        int sigDecena = suma;
+        while (sigDecena%10 != 0) sigDecena++;
+
+        if (sigDecena-suma != control) throw new CodigoBarrasException();
+
+        System.out.println("El código de barras " + codigoBarras + " es correcto");
     }
 }
