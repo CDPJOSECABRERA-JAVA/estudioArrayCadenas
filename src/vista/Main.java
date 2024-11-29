@@ -1,6 +1,7 @@
 package vista;
 import ejercicios.EjercicioCadenas;
 import ejercicios.EjercicioLeyDHondt;
+import ejercicios.Ejercicios;
 import ejercicios.EjerciciosArraysBidimensionales;
 import ejercicios.EjerciciosArraysUnidimensionales;
 import ejercicios.JuegoCartas;
@@ -54,8 +55,12 @@ public class Main {
         System.out.println("Estudio cadenas");
         EstudioCadenas estudioCadenas = new EstudioCadenas(); */
         
+        /* 
         System.out.println("Ejercicios cadenas");
         EjercicioCadenas ejercicioCadenas = new EjercicioCadenas();
+        */
+        System.out.println("Ejercicios");
+        Ejercicios ejercicios = new Ejercicios();
 
     }
 }
