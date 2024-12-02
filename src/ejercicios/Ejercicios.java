@@ -60,13 +60,13 @@ public class Ejercicios {
             private int[] cincuerizarArr(int[] arr){
                 int[] arrCincuerizado = new int[arr.length];
 
-                int suma;
+                int cuenta;
 
                 for (int i = 0; i < arrCincuerizado.length; i++) {
                     if (arr[i]%5 == 0) arrCincuerizado[i] = arr[i];
                     else{
-                        suma = (arr[i]-(arr[i]%10))+5;
-                        arrCincuerizado[i] = suma;
+                        cuenta = (arr[i]-(arr[i]%5))+5;
+                        arrCincuerizado[i] = cuenta;
                     }
                 }
 
@@ -105,15 +105,16 @@ public class Ejercicios {
                 for (int i = 0; i < contrasena.length(); i++) {
                      caracter = contrasena.charAt(i);
 
-                     if (letrasMinus && letrasMayus && numeros && carEspeciales){
-                        contrasenaValida = true;
-                        break;
-                     }
-
                     if (!numeros && Character.isDigit(caracter)) numeros = true;
                     else if(!letrasMinus && caracter == Character.toLowerCase(caracter)) letrasMinus = true;
                     else if(!letrasMayus && caracter == Character.toUpperCase(caracter)) letrasMayus = true;
                     else if (!carEspeciales && !Character.isDigit(caracter) && !Character.isLetter(caracter)) carEspeciales = true;
+                
+                
+                    if (letrasMinus && letrasMayus && numeros && carEspeciales){
+                        contrasenaValida = true;
+                        break;
+                     }
                 }
 
                 if (!contrasenaValida) throw new ContrasenaException();
