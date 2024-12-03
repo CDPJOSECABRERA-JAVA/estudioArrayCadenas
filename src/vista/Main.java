@@ -5,6 +5,7 @@ import ejercicios.Ejercicios;
 import ejercicios.EjerciciosArraysBidimensionales;
 import ejercicios.EjerciciosArraysUnidimensionales;
 import ejercicios.JuegoCartas;
+import ejercicios.Tute;
 import estudioArray.EstudioArrayBidi;
 import estudioArray.EstudioArrayUnidimensional;
 import estudioArray.Notas;
@@ -59,8 +60,11 @@ public class Main {
         System.out.println("Ejercicios cadenas");
         EjercicioCadenas ejercicioCadenas = new EjercicioCadenas();
         */
+        /* 
         System.out.println("Ejercicios");
         Ejercicios ejercicios = new Ejercicios();
-
+        */
+        System.out.println("Tute");
+        Tute tute = new Tute();
     }
 }

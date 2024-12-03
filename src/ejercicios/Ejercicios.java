@@ -47,7 +47,7 @@ public class Ejercicios {
             System.out.println(e.getMessage());
         }
             }
-                    // ---------- EJERCICIO 3 ----------
+                    // ---------- EJERCICIO 4 ----------
             
             public void ejercicio4(){
                 int[] arr = rellenarArrUni(15);
@@ -109,7 +109,6 @@ public class Ejercicios {
                     else if(!letrasMinus && caracter == Character.toLowerCase(caracter)) letrasMinus = true;
                     else if(!letrasMayus && caracter == Character.toUpperCase(caracter)) letrasMayus = true;
                     else if (!carEspeciales && !Character.isDigit(caracter) && !Character.isLetter(caracter)) carEspeciales = true;
-                
                 
                     if (letrasMinus && letrasMayus && numeros && carEspeciales){
                         contrasenaValida = true;
