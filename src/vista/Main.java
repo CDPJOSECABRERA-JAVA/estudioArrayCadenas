@@ -1,4 +1,5 @@
 package vista;
+import ejercicios.CuentaBancaria;
 import ejercicios.EjercicioCadenas;
 import ejercicios.EjercicioLeyDHondt;
 import ejercicios.Ejercicios;
@@ -64,7 +65,11 @@ public class Main {
         System.out.println("Ejercicios");
         Ejercicios ejercicios = new Ejercicios();
         */
+        /*
         System.out.println("Tute");
         Tute tute = new Tute();
+        */
+        System.out.println("Comprobación cuenta bancaria.");
+        CuentaBancaria cuentaBancaria = new CuentaBancaria();
     }
 }
